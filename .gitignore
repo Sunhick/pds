@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Mac
+.DS_Store
+/bazel-bin
+/bazel-genfiles
+/bazel-out
+/bazel-probabilistic-data-structures
+/bazel-testlogs

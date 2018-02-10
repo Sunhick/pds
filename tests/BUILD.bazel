@@ -1,0 +1,15 @@
+# Copyright (C) 2018 by Sunil
+
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"]) # MIT license
+
+cc_test(
+    name = "bf-tests",
+    srcs = ["bloom-filter/bloom-filter-tests.cc"],
+    deps = [
+        "//:bf",
+        "@gtest//:main"
+    ],
+    copts = ["-Iexternal/gtest/include"],
+)
