@@ -36,6 +36,10 @@ class CountMinSketch {
   std::size_t Estimate(T element);
 };
 
+// TODO: should provide a mechnism to pipe the hash<T> functions in the
+// template. for e.g. CountMinSketch<int, hash1, hash2, ..., hashn> cms;
+// This would need a template-template variadic template metaprogramming.
+// I was having too many issues with hence the constructor approach.
 template <typename T>
 CountMinSketch<T>::CountMinSketch(int width,
                                   std::initializer_list<hash<T>> hashes)
