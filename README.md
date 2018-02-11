@@ -1,2 +1,3 @@
-# probabilistic-data-structures
-Collection of probabilistic data structures
+# Probabilistic Data Structures
+
+Collection of probabilistic data structures.
