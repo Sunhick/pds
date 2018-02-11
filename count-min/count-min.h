@@ -5,6 +5,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <exception>
+#include <iostream>
 #include <vector>
 
 #include "common/hash.h"
@@ -39,19 +41,22 @@ template <typename T>
 CountMinSketch<T>::CountMinSketch(int width,
                                   std::initializer_list<hash<T>> hashes)
     : width(width), depth(hashes.size()), hashes(hashes) {
-  if (depth > hashes.size())
-    std::exception(
+  if ((std::size_t)depth > hashes.size())
+    std::runtime_error(
         "hash functions are too few! should be atleast the size of depth");
-        table.reserve(depth);
-  for (auto& row : table) {
-    row.reserve(width);
+  table.reserve(depth);
+  for (auto i = 0; i < depth; i++) {
+    table.push_back(std::vector<std::size_t>(width));
+    for (auto j = 0; j < width; j++) {
+      table[i][j] = 0;
+    }
   }
 }
 
 template <typename T>
 std::size_t CountMinSketch<T>::RoughCount(T element) {
   std::vector<std::size_t> values(depth);
-  for (auto i = 0; i < table.size(); i++) {
+  for (auto i = 0; i < depth; i++) {
     auto& hash = hashes[i];
     auto index = hash(element);
     auto row = index % depth;
@@ -59,12 +64,13 @@ std::size_t CountMinSketch<T>::RoughCount(T element) {
     values[i] = table[row][col];
   }
 
-  return std::min_element(values.begin(), values.end());
+  auto it = std::min_element(values.begin(), values.end());
+  return it != values.end() ? *it : -1;
 }
 
 template <typename T>
 void CountMinSketch<T>::Add(T element) {
-  for (auto i = 0; i < table.size(); i++) {
+  for (auto i = 0; i < depth; i++) {
     auto& hash = hashes[i];
     auto index = hash(element);
     auto row = index % depth;
