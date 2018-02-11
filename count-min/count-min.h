@@ -33,7 +33,7 @@ class CountMinSketch {
  public:
   CountMinSketch(int width, std::initializer_list<hash<T>> hashes);
   void Add(T element);
-  std::size_t RoughCount(T element);
+  std::size_t Estimate(T element);
 };
 
 template <typename T>
@@ -43,6 +43,10 @@ CountMinSketch<T>::CountMinSketch(int width,
   if ((std::size_t)depth > hashes.size())
     std::runtime_error(
         "Too few hash functions passed! Should be atleast the size of depth");
+
+  // Make a fixed table of width x depth size.
+  // FIXME: See if i can use std::array<...> with constexpr? It's better
+  // choice for fixed grids and I get rid of reserve.
   table.reserve(depth);
   for (auto i = 0; i < depth; i++) {
     table.push_back(std::vector<std::size_t>(width));
@@ -52,8 +56,12 @@ CountMinSketch<T>::CountMinSketch(int width,
   }
 }
 
+// Estimate the frequency of the given element. A good estimate of the frequency/
+// tracking count of the element depends on the quality of hash function and
+// width and depth of the table, which inturn are calcuated based on your need
+// of epsilon & delta(tolerance).
 template <typename T>
-std::size_t CountMinSketch<T>::RoughCount(T element) {
+std::size_t CountMinSketch<T>::Estimate(T element) {
   std::vector<std::size_t> values(depth);
   for (auto i = 0; i < depth; i++) {
     auto& hash = hashes[i];
@@ -67,6 +75,9 @@ std::size_t CountMinSketch<T>::RoughCount(T element) {
   return it != values.end() ? *it : -1;
 }
 
+// Adds a given element in the table. It's actually doesn't add the element
+// since it doesn't have a backing store. But it only tracks how many times
+// a element has been added.
 template <typename T>
 void CountMinSketch<T>::Add(T element) {
   for (auto i = 0; i < depth; i++) {

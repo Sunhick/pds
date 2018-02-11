@@ -25,8 +25,8 @@ TEST(CountMinTests, Counter) {
   cms.Add(20);
 
   // assert with some tolerance
-  ASSERT_EQ((std::size_t)2, cms.RoughCount(10));
-  ASSERT_EQ((std::size_t)0, cms.RoughCount(99));
+  ASSERT_EQ((std::size_t)2, cms.Estimate(10));
+  ASSERT_EQ((std::size_t)0, cms.Estimate(99));
   
   // 90 & 10 collides. use an elegant hash function.
   // ASSERT_EQ((std::size_t)0, cms.RoughCount(90));
