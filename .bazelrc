@@ -1,3 +1,5 @@
+# https://github.com/korfuri/bazel-travis
+
 # Enable warnings
 # build --cxxopt -std=c++14
 # build --cxxopt -Wall
