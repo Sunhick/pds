@@ -60,10 +60,10 @@ CountMinSketch<T>::CountMinSketch(int width,
   }
 }
 
-// Estimate the frequency of the given element. A good estimate of the frequency/
-// tracking count of the element depends on the quality of hash function and
-// width and depth of the table, which inturn are calcuated based on your need
-// of epsilon & delta(tolerance).
+// Estimate the frequency of the given element. A good estimate of the
+// frequency/ tracking count of the element depends on the quality of hash
+// function and width and depth of the table, which inturn are calcuated based
+// on your need of epsilon & delta(tolerance).
 template <typename T>
 std::size_t CountMinSketch<T>::Estimate(T element) {
   std::vector<std::size_t> values(depth);
