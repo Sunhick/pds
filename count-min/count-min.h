@@ -43,7 +43,7 @@ CountMinSketch<T>::CountMinSketch(int width,
     : width(width), depth(hashes.size()), hashes(hashes) {
   if ((std::size_t)depth > hashes.size())
     std::runtime_error(
-        "hash functions are too few! should be atleast the size of depth");
+        "Too few hash functions passed! Should be atleast the size of depth");
   table.reserve(depth);
   for (auto i = 0; i < depth; i++) {
     table.push_back(std::vector<std::size_t>(width));
