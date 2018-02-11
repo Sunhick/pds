@@ -10,3 +10,9 @@ alias(
     actual = "//bloom-filter:bloom-filter"
 )
 
+# count min sketch library
+alias(
+    name = "cms",
+    actual = "//count-min:count-min"
+)
+

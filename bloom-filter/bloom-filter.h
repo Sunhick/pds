@@ -6,6 +6,8 @@
 #include <bitset>
 #include <vector>
 
+#include "common/hash.h"
+
 namespace prob {
 namespace ds {
 

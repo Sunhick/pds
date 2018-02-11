@@ -13,3 +13,13 @@ cc_test(
     ],
     copts = ["-Iexternal/gtest/include"],
 )
+
+cc_test(
+    name = "cms-tests",
+    srcs = ["count-min-sketch/count-min-tests.cc"],
+    deps = [
+        "//:cms",
+        "@gtest//:main"
+    ],
+    copts = ["-Iexternal/gtest/include"],
+)
