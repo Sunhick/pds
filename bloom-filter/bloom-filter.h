@@ -3,6 +3,9 @@
 #ifndef BLOOM_FILTER_H
 #define BLOOM_FILTER_H
 
+#include <bitset>
+#include <functional>
+
 namespace prob {
 namespace ds {
 
@@ -11,8 +14,12 @@ namespace ds {
 // says it's not present then it's definately not member of a given set,
 // however if it determines is a member then it could be either true positive
 // or false negative.
-template <typename T>
+template <typename T, const std::size_t N>
 class BloomFilter {
+ private:
+  std::bitset<N> filter;
+  std::size_t getIndex(T element) const;
+
  public:
   // returns true if the element is proabably present in the set, false
   // otherwise. False definately means element isn't present in the set.
@@ -22,15 +29,25 @@ class BloomFilter {
   void Add(T element);
 };
 
-template <typename T>
-bool BloomFilter<T>::IsMember(T element) {
+template <typename T, const std::size_t N>
+bool BloomFilter<T, N>::IsMember(T element) {
   // Test for membership of the element.
-  return true;
+  auto index = getIndex(element);
+  return filter.test(index);
 }
 
-template <typename T>
-void BloomFilter<T>::Add(T element) {
-  // Add the element to the set
+template <typename T, const std::size_t N>
+void BloomFilter<T, N>::Add(T element) {
+  // std::hash supports only standard types. If you are using custom types
+  // then override the std::hash as mentioned in
+  // http://en.cppreference.com/w/cpp/utility/hash.
+  auto index = getIndex(element);
+  filter.set(index);
+}
+
+template <typename T, const std::size_t N>
+std::size_t BloomFilter<T, N>::getIndex(T element) const {
+  return static_cast<std::size_t>(std::hash<T>{}(element) % N);
 }
 
 }  // namespace ds
