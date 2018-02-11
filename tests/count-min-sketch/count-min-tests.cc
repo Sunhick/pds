@@ -6,13 +6,13 @@
 #include "gtest/gtest.h"
 
 TEST(CountMinTests, Counter) {
-  auto width = prob::ds::CountMinWidth(0.1);  // 20
-  auto depth = prob::ds::CountMinDepth(0.9);  // 4
+  auto width = pds::CountMinWidth(0.1);  // 20
+  auto depth = pds::CountMinDepth(0.9);  // 4
 
   ASSERT_EQ(width, 20);
   ASSERT_EQ(depth, 4);
 
-  prob::ds::CountMinSketch<int> cms(
+  pds::CountMinSketch<int> cms(
       width,
       {
         std::hash<int>{},

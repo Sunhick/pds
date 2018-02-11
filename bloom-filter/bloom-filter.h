@@ -8,8 +8,7 @@
 
 #include "common/hash.h"
 
-namespace prob {
-namespace ds {
+namespace pds {
 
 template <typename T>
 using hash = std::function<std::size_t(T)>;
@@ -65,7 +64,6 @@ std::size_t BloomFilter<T, N>::getIndex(T element, hash<T>& hash) const {
   return static_cast<std::size_t>(hash(element) % N);
 }
 
-}  // namespace ds
-}  // namespace prob
+}  // namespace pds
 
 #endif /* BLOOM_FILTER_H */

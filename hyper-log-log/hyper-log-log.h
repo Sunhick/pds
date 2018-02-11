@@ -5,8 +5,7 @@
 
 #include "common/hash.h"
 
-namespace prob {
-namespace ds {
+namespace pds {
 
 // HyperLogLog data structure counts the number of distinct elements in a set.
 template <typename T>
@@ -26,7 +25,6 @@ std::size_t HyperLogLog<T>::Cardinality() {
   return 0;
 }
 
-}  // namespace ds
-}  // namespace prob
+}  // namespace pds
 
 #endif /* HYPER_LOG_LOG_H */

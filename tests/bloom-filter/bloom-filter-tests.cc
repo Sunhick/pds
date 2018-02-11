@@ -33,14 +33,14 @@ struct hashDataAlt {
 
 TEST(BloomFilterTests, Simple_Present) {
   // test for present
-  prob::ds::BloomFilter<int, 100> bf({std::hash<int>{}});
+  pds::BloomFilter<int, 100> bf({std::hash<int>{}});
   bf.Add(90);
   ASSERT_TRUE(bf.IsMember(90));
 }
 
 TEST(BloomFilterTests, Complex_Present_Absent) {
   Data d = {"jack", 121};
-  prob::ds::BloomFilter<Data, 100> bf({hashData{}, hashDataAlt{}});
+  pds::BloomFilter<Data, 100> bf({hashData{}, hashDataAlt{}});
   bf.Add(d);
 
   ASSERT_TRUE(bf.IsMember(d));
@@ -49,7 +49,7 @@ TEST(BloomFilterTests, Complex_Present_Absent) {
 }
 
 TEST(BloomFilterTests, String_Present_Absent) {
-  prob::ds::BloomFilter<std::string, 10> bf({std::hash<std::string>{}});
+  pds::BloomFilter<std::string, 10> bf({std::hash<std::string>{}});
   bf.Add("hello");
   ASSERT_TRUE(bf.IsMember("hello"));
   ASSERT_FALSE(bf.IsMember("Not present"));

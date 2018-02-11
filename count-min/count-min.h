@@ -11,8 +11,7 @@
 
 #include "common/hash.h"
 
-namespace prob {
-namespace ds {
+namespace pds {
 
 auto CountMinWidth = [](float epsilon) { return (int)std::ceil(2 / epsilon); };
 
@@ -79,7 +78,6 @@ void CountMinSketch<T>::Add(T element) {
   }
 }
 
-}  // namespace ds
-}  // namespace prob
+}  // namespace pds
 
 #endif /* COUNT_MIN_SKETCH_H */

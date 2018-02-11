@@ -6,6 +6,6 @@
 #include "gtest/gtest.h"
 
 TEST(HyperLogLogTest, Cardinality) {
-  prob::ds::HyperLogLog<int> hll;      
+  pds::HyperLogLog<int> hll;      
   ASSERT_EQ((std::size_t)0, hll.Cardinality());
 }
