@@ -1,0 +1,12 @@
+# Copyright (C) 2018 by Sunil
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "hll",
+    srcs = [],
+    hdrs = ["hyper-log-log.h"],
+    deps = [
+        "//common:common"
+    ]
+)

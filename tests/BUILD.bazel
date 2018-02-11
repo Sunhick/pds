@@ -23,3 +23,13 @@ cc_test(
     ],
     copts = ["-Iexternal/gtest/include"],
 )
+
+cc_test(
+    name = "hll-tests",
+    srcs = ["hyper-log-log/hyper-log-log-tests.cc"],
+    deps = [
+        "//:hll",
+        "@gtest//:main"
+    ],
+    copts = ["-Iexternal/gtest/include"],
+)

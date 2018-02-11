@@ -16,3 +16,8 @@ alias(
     actual = "//count-min:count-min"
 )
 
+# hyper log log library
+alias(
+    name = "hll",
+    actual = "//hyper-log-log:hll"
+)
