@@ -38,6 +38,7 @@ TEST(BloomFilterTests, Complex_Present_Absent) {
 
   ASSERT_TRUE(bf.IsMember(d));
   ASSERT_FALSE(bf.IsMember(Data()));
+  ASSERT_FALSE(bf.IsMember({"sunil", 121}));
 }
 
 TEST(BloomFilterTests, String_Present_Absent) {
@@ -45,4 +46,6 @@ TEST(BloomFilterTests, String_Present_Absent) {
   bf.Add("hello");
   ASSERT_TRUE(bf.IsMember("hello"));
   ASSERT_FALSE(bf.IsMember("Not present"));
+  ASSERT_FALSE(bf.IsMember("Hello"));
+  ASSERT_FALSE(bf.IsMember("helo"));
 }
