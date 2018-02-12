@@ -2,10 +2,10 @@
 
 #include <iostream>
 
-#include "hyper-log-log/hyper-log-log.h"
 #include "gtest/gtest.h"
+#include "hyper-log-log/hyper-log-log.h"
 
 TEST(HyperLogLogTest, Cardinality) {
-  pds::HyperLogLog<int> hll;      
-  ASSERT_EQ((std::size_t)0, hll.Cardinality());
+  pds::HyperLogLog<int> hll(5, std::hash<int>{});
+  ASSERT_EQ((std::size_t)0, hll.Count());
 }
