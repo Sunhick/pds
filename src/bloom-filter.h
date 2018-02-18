@@ -10,9 +10,6 @@
 
 namespace pds {
 
-template <typename T>
-using hash = std::function<std::size_t(T)>;
-
 // Space efficient implementation of testing wheather a given elements
 // belongs in a set or not. It's probabilisitic because if the bloom filter
 // says it's not present then it's definately not member of a given set,

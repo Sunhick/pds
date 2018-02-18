@@ -8,6 +8,21 @@
 
 #include "hash.h"
 
+namespace {
+
+std::size_t clz(std::size_t num) {
+  std::size_t zcount = 0;
+  const std::size_t bits = sizeof(num) * 8;
+  for (std::size_t i = 1; i < bits; i++) {
+    if (num < 0) break;
+    zcount++;
+    num <<= 1;
+  }
+  return zcount;
+}
+
+}  // Namespace
+
 namespace pds {
 
 // HyperLogLog data structure counts the number of distinct elements in a set.
@@ -50,21 +65,6 @@ std::size_t HyperLogLog<T>::Count() {
 
 template <typename T>
 void HyperLogLog<T>::Merge() {}
-
-namespace {
-
-std::size_t clz(std::size_t num) {
-  std::size_t zcount = 0;
-  const std::size_t bits = sizeof(num) * 8;
-  for (std::size_t i = 1; i < bits; i++) {
-    if (num < 0) break;
-    zcount++;
-    num <<= 1;
-  }
-  return zcount;
-}
-
-}  // Namespace
 
 }  // namespace pds
 
