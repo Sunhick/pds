@@ -6,7 +6,7 @@ licenses(["notice"]) # MIT license
 
 cc_test(
     name = "bf-tests",
-    srcs = ["bloom-filter/bloom-filter-tests.cc"],
+    srcs = ["bloom-filter-tests.cc"],
     deps = [
         "//:bf",
         "@gtest//:main"
@@ -16,7 +16,7 @@ cc_test(
 
 cc_test(
     name = "cms-tests",
-    srcs = ["count-min-sketch/count-min-tests.cc"],
+    srcs = ["count-min-tests.cc"],
     deps = [
         "//:cms",
         "@gtest//:main"
@@ -26,7 +26,7 @@ cc_test(
 
 cc_test(
     name = "hll-tests",
-    srcs = ["hyper-log-log/hyper-log-log-tests.cc"],
+    srcs = ["hyper-log-log-tests.cc"],
     deps = [
         "//:hll",
         "@gtest//:main"

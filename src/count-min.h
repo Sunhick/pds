@@ -9,7 +9,7 @@
 #include <iostream>
 #include <vector>
 
-#include "common/hash.h"
+#include "hash.h"
 
 namespace pds {
 

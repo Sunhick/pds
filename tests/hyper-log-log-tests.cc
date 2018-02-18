@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "gtest/gtest.h"
-#include "hyper-log-log/hyper-log-log.h"
+#include "src/hyper-log-log.h"
 
 TEST(HyperLogLogTest, Cardinality) {
   pds::HyperLogLog<int> hll(5, std::hash<int>{});

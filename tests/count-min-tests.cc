@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "count-min/count-min.h"
+#include "src/count-min.h"
 #include "gtest/gtest.h"
 
 TEST(CountMinTests, Counter) {

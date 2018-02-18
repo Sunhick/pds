@@ -38,3 +38,4 @@
 /bazel-out
 /bazel-probabilistic-data-structures
 /bazel-testlogs
+/bazel-pds

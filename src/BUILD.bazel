@@ -1,0 +1,35 @@
+# Copyright (C) 2018 by Sunil
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "bloom-filter",
+    srcs = [],
+    hdrs = ["bloom-filter.h"],
+    deps = [
+        ":common"
+    ]
+)
+
+cc_library(
+    name = "count-min",
+    srcs = [],
+    hdrs = ["count-min.h"],
+    deps = [
+        ":common"
+    ]
+)
+
+cc_library(
+    name = "hll",
+    srcs = [],
+    hdrs = ["hyper-log-log.h"],
+    deps = [
+        ":common"
+    ]
+)
+
+cc_library(
+    name = "common",
+    hdrs = ["hash.h"]
+)

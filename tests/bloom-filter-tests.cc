@@ -3,7 +3,7 @@
 #include <functional>
 #include <iostream>
 
-#include "bloom-filter/bloom-filter.h"
+#include "src/bloom-filter.h"
 #include "gtest/gtest.h"
 
 namespace {

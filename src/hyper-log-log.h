@@ -6,7 +6,7 @@
 #include <cmath>
 #include <vector>
 
-#include "common/hash.h"
+#include "hash.h"
 
 namespace pds {
 
@@ -38,7 +38,7 @@ template <typename T>
 void HyperLogLog<T>::Add(T element) {
   auto h = func(element);
   auto index = (h >> (reglimit - bucketBits)) + 1;
-  auto pos = lzc(h << bucketBits);
+  auto pos = clz(h << bucketBits);
   registers[index] = std::max(registers[index], pos);
 }
 
@@ -53,7 +53,7 @@ void HyperLogLog<T>::Merge() {}
 
 namespace {
 
-std::size_t lzc(std::size_t num) {
+std::size_t clz(std::size_t num) {
   std::size_t zcount = 0;
   const std::size_t bits = sizeof(num) * 8;
   for (std::size_t i = 1; i < bits; i++) {

@@ -7,17 +7,17 @@ licenses(["notice"]) # MIT license
 # bloom filter library
 alias(
     name = "bf",
-    actual = "//bloom-filter:bloom-filter"
+    actual = "//src:bloom-filter"
 )
 
 # count min sketch library
 alias(
     name = "cms",
-    actual = "//count-min:count-min"
+    actual = "//src:count-min"
 )
 
 # hyper log log library
 alias(
     name = "hll",
-    actual = "//hyper-log-log:hll"
+    actual = "//src:hll"
 )
